@@ -1,5 +1,43 @@
 # PineappleStudios
 
+Media library and recommendation web app for books, movies and songs, built as an NTU software engineering group project (2024).
+
+[![Remix](https://img.shields.io/badge/Remix-2-000000?style=flat-square&logo=remix&logoColor=white)](https://remix.run/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-SQLite-2D3748?style=flat-square&logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![Flask](https://img.shields.io/badge/Flask-recommender-000000?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+![NTU](https://img.shields.io/badge/NTU-software%20engineering-1F3A93?style=flat-square)
+
+## What it does
+
+Users sign up, set their media preferences, browse books, movies and songs pulled from public catalogues (Google Books, OMDb and Spotify), and keep them in a personal library organised into folders and tags, with ratings and reviews. A separate Flask service recommends similar titles three ways: an LLM suggestion, a content-based model (TF-IDF, cosine similarity, nearest neighbours) and a shuffled mix of both.
+
+## Tech
+
+- **Web app:** Remix 2, React 18, TypeScript, Tailwind CSS, daisyUI (`src/app/`)
+- **Data:** Prisma with SQLite (`prisma/schema.prisma`, data access in `src/lib/`)
+- **Recommender:** Python, Flask, scikit-learn, OpenAI API (`recommendation_engine/`)
+
+## Run
+
+Node 20.11.0 (see `.node-version`); full setup in [docs/get_started](docs/get_started/README.md).
+
+```bash
+pnpm install                                # or npm install
+echo 'DATABASE_URL="file:./dev.db"' > .env
+npx prisma db push                          # create the SQLite tables from prisma/schema.prisma
+pnpm dev                                    # dev server
+
+# recommender (Flask, port 5000): needs OPENAI_API_KEY in recommendation_engine/.env
+# and the .joblib/.pkl model files listed in recommendation_engine/download_these.md
+cd recommendation_engine
+pip install -r requirements.txt
+python Recommendation_System_server.py
+```
+
+## Team notes
+
 Software Engineering Group 2 for SCSG
 
 ## Get Started

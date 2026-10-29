@@ -21,3 +21,10 @@ bun.lockb
 src/app/routes/test.api.$id/route.tsx
 /src/app/routes/api.test/
 /src/app/routes/api.test/route.tsx
+
+# Python (recommendation engine)
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
