@@ -46,7 +46,7 @@ Find the instructions in `./docs/get_started/README.md`
 
 ## Commands you often use
 
-> On Windows Powershell, there maybe some errors with pnpm, then you just use npm as well.
+> On Windows Powershell, there may be some errors with pnpm, then you just use npm as well.
 
 ```sh
 git add <files>
@@ -56,7 +56,7 @@ git pull
 
 fnm use           # to use the current node version
 
-# On Windows Powershell, there maybe some errors with pnpm, then you just use npm as well.
+# On Windows Powershell, there may be some errors with pnpm, then you just use npm as well.
 
 pnpm install      # install dependencies
 pnpm i            # short for pnpm install
@@ -82,7 +82,7 @@ npm run build
 npm run start
 npm run format
 npm run lint
-npm run foramt:lint
+npm run format:lint
 ```
 
 ## Folder explanation
@@ -118,7 +118,7 @@ Head over to recommendation_engine file for the server and scripts
 │   └── .joblib files and .pkl files in google drive link (must be loaded into the same directory where the  Recommendation_System.py, Recommendation_System_server.py and .env files are located)
 ```
 
-ues google drive link for .joblib files and .pkl files
+Use the Google Drive link in [recommendation_engine/download_these.md](recommendation_engine/download_these.md) for the .joblib and .pkl files.
 
 ### To run server
 
@@ -131,7 +131,7 @@ python Recommendation_System_server.py
 
 ## Check out the links
 
-- `prisma`: [Prisma with Remix](https://github.com/prisma/prisma-examples/tree/latest/typescript/remix)
+- `prisma`: [Prisma with Remix](https://github.com/prisma/prisma-examples/tree/latest/orm/remix)
   - `schema.prisma`: [Prisma Schema](https://www.prisma.io/docs/getting-started/quickstart#2-model-your-data-in-the-prisma-schema)
 - `public`
 - `src`
@@ -142,7 +142,7 @@ python Recommendation_System_server.py
     - `entry.server.tsx`: [Server Entry](https://remix.run/docs/en/main/file-conventions/entry.server)
     - `root.tsx`: [Root Route](https://remix.run/docs/en/main/file-conventions/root)
     - `tailwind.css`: [Tailwind entry](https://remix.run/docs/en/main/styling/tailwind)
-  - `database`: [Prisma with Remix](https://github.com/prisma/prisma-examples/tree/latest/typescript/remix)
+  - `database`: [Prisma with Remix](https://github.com/prisma/prisma-examples/tree/latest/orm/remix)
 - `package.json`
 - `PineappleStudios.code-workspace`
 - `production.env`: [Check out paragraph 3: Because the SQLite...](https://www.prisma.io/docs/getting-started/quickstart#3-run-a-migration-to-create-your-database-tables-with-prisma-migrate)
@@ -177,13 +177,12 @@ python Recommendation_System_server.py
   - Website: [Prisma.io](https://www.prisma.io/)
   - Learn it at:
     - [Quick Start](https://www.prisma.io/docs/getting-started/quickstart)
-    - [Prisma with Remix](https://github.com/prisma/prisma-examples/tree/latest/typescript/remix)
+    - [Prisma with Remix](https://github.com/prisma/prisma-examples/tree/latest/orm/remix)
     - [Tutorial](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql)
       - This tutorial is based on postgresql, but the main concept is the same.
   - `sqlite`: We are using sqlite database, because it is just a file, need no outside database server.
-    - More info at: [Prima + sqlite](https://www.prisma.io/docs/orm/overview/databases/sqlite)
+    - More info at: [Prisma + SQLite](https://www.prisma.io/docs/orm/overview/databases/sqlite)
   - Create a file called `.env`, write `DATABASE_URL="file:./dev.db"`.
-  - For now(Feb 2nd), `prisma` is just initialized, but not using in the codebase, because we are not yet implemented our database schema yet.
 
 # Documentation for using Recommendation System
 
@@ -191,9 +190,9 @@ python Recommendation_System_server.py
 
 This Flask server ( Recommendation_System_server.py ) provides endpoints for generating recommendations based on media content (books, movies, songs). The recommendations can be generated using three methods:
 
-1. `GET /recommend/llm`: Uses a large language model to suggest similar media based on a given title.
-2. `GET /recommend/content`: Provides content-based recommendations using TF-IDF, cosine-similarity and nearest neighbor techniques.
-3. `GET /recommend/combined`: Combines the results from both the LLM and content-based methods, shuffles them, and provides a diverse set of recommendations.
+1. `POST /recommend/llm`: Uses a large language model to suggest similar media based on a given title.
+2. `POST /recommend/content`: Provides content-based recommendations using TF-IDF, cosine-similarity and nearest neighbor techniques.
+3. `POST /recommend/combined`: Combines the results from both the LLM and content-based methods, shuffles them, and provides a diverse set of recommendations.
 
 ### Setting up the TypeScript Application
 
